@@ -1,0 +1,68 @@
+.About-page {
+  background-color: #f9f9fa;
+  padding: 20px;
+  margin-left: 2cm;
+}
+
+.navbar {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+body.dark .navbar {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+body:not(.dark) .navbar {
+  background-color: #000;
+  color: white;
+}
+
+.search {
+  margin: 20px 0;
+  padding: 10px;
+  width: 300px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  color: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h4 {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.stat-card p {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.green {
+  background: linear-gradient(135deg, #667eea, #c0c9f1);
+}
+.red{
+  background: linear-gradient(135deg, #d01302, #e4a9a9);
+}
