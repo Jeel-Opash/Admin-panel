@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/themecontext";
+import { ThemeContext } from "../context/ThemeContext";
 
 export const Setting= () => {
   const { settings, toggleSetting } = useContext(ThemeContext);
