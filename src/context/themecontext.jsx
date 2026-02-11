@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ThemeContext } from './ThemeContext';
+import { ThemeContext } from "./ThemeContext";
 
 export { ThemeContext };
 
