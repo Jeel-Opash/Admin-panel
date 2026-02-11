@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../style/User.css";
 
 export const User = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(() => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    return storedUsers.map((u) => ({
+      ...u,
+      userId: Number(u.userId),
+      totalRevenue: Number(u.totalRevenue),
+      activeUsers: Number(u.activeUsers),
+      newSignups: Number(u.newSignups),
+      conversionRate: Number(u.conversionRate),
+    }));
+  });
   const [isEditing, setIsEditing] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -16,22 +26,6 @@ export const User = () => {
     newSignups: "",
     conversionRate: "",
   });
-
-  useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-    const normalizedUsers = storedUsers.map((u) => ({
-      ...u,
-      userId: Number(u.userId),
-      totalRevenue: Number(u.totalRevenue),
-      activeUsers: Number(u.activeUsers),
-      newSignups: Number(u.newSignups),
-      conversionRate: Number(u.conversionRate),
-    }));
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setUsers(normalizedUsers);
-  }, []);
 
   const saveToLocalStorage = (data) => {
     localStorage.setItem("users", JSON.stringify(data));
@@ -188,7 +182,7 @@ export const User = () => {
       </div>
 
       <button>
-        <NavLink to="/">Back</NavLink>
+        <NavLink to="/dashboard">Back</NavLink>
       </button>
     </div>
   );

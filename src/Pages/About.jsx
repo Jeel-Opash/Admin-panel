@@ -1,19 +1,14 @@
 import "../style/About.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RiAdminFill } from "react-icons/ri";
 
 export const About = () => {
-  const [users, setUsers] = useState([]);
-  const [displayUser, setDisplayUser] = useState(null);
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+  const [users] = useState(() => JSON.parse(localStorage.getItem("users")) || []);
+  const [displayUser, setDisplayUser] = useState(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    setUsers(storedUsers);
-    setDisplayUser(storedUsers[0] || null);
-    setLoading(false);
-  }, []);
+    return storedUsers[0] || null;
+  });
+  const [search, setSearch] = useState("");
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -30,8 +25,6 @@ export const About = () => {
         String(user.userId).includes(q));
 setDisplayUser(foundUser || null);
   };
-
-  if (loading) return <h1>Loading...</h1>;
 
   return (
     <div className="About-page">

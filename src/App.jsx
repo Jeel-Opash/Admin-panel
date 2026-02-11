@@ -9,10 +9,10 @@ export const App=()=>{
     <BrowserRouter>
    
     <Routes>
-      <Route path="/login" element={<Login/>} />
-      <Route path="/" element={<Dashboard/>}>
+      <Route path="/" element={<Login/>} />
+      <Route path="/dashboard" element={<Dashboard/>}>
+        <Route index element={<About/>}/>
         <Route path="user" element={<User/>} />
-        <Route path="/" element={<About/>}/>
         <Route path="setting" element={<Setting/>} />
       </Route>
     </Routes>

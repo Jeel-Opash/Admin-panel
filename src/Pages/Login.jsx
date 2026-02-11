@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import '../style/Login.css';
 
 export const Login=()=>{
@@ -14,7 +14,7 @@ const handleSubmit=(e)=> {
     setLoading(true)
     if (user === "jeel402" && password === "Jeel!@#123") {
       localStorage.setItem("isAuthenticated", "true");
-      navigate("/");
+      navigate("/dashboard");
     } else {
       seterror(true);
       setLoading(false);
@@ -40,7 +40,9 @@ const handleSubmit=(e)=> {
         )}
 
         <button type="submit" className="btn">
+          <NavLink to="/dashboard">
           {Loading ? "Loading..." : "Sign In"}
+          </NavLink>
         </button>
       </form>
     </div>
